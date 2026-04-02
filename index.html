@@ -97,6 +97,47 @@
     }
 
     .search-note { font-size:13px; color:var(--muted); margin-top:8px; }
+
+    .wa-catalog-top{
+      display:flex;
+      justify-content:center;
+      margin:18px 0 4px;
+    }
+
+    .wa-catalog-btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      min-height:46px;
+      padding:0 18px;
+      border:none;
+      border-radius:999px;
+      background:#25D366;
+      color:#fff;
+      text-decoration:none;
+      font-size:15px;
+      font-weight:800;
+      box-shadow:var(--shadow);
+      transition:transform .15s ease, filter .15s ease;
+    }
+
+    .wa-catalog-btn:hover{
+      filter:brightness(.96);
+      transform:translateY(-1px);
+    }
+
+    .wa-catalog-btn:active{
+      transform:translateY(0);
+    }
+
+    .wa-catalog-note{
+      text-align:center;
+      color:var(--muted);
+      font-size:13px;
+      margin:8px 0 0;
+    }
+
     .section-title { font-size:18px; font-weight:800; margin:24px 0 12px; }
     .categories-grid { display:grid; grid-template-columns:1fr; gap:10px; }
 
@@ -505,6 +546,16 @@
       <p class="subtitle">Toca una categoría o usá la búsqueda para armar tu pedido.</p>
     </header>
 
+
+    <div class="wa-catalog-top">
+      <a class="wa-catalog-btn" href="https://wa.me/c/5492966678951" target="_blank" rel="noopener noreferrer" aria-label="Abrir catálogo de WhatsApp">
+        <span>🟢</span>
+        <span>Ver catálogo en WhatsApp</span>
+      </a>
+    </div>
+    <p class="wa-catalog-note">También podés abrir el catálogo directo en WhatsApp.</p>
+
+
     <div class="search-box">
       <label for="searchInput">Buscar excursiones</label>
       <input id="searchInput" type="text" placeholder="Ej: gourmet, chaltén, navegación..." />
@@ -670,7 +721,7 @@
   <iframe id="submitFrame" name="submitFrame" style="display:none;"></iframe>
 
   <script>
-    const API_BASE = "https://script.google.com/macros/s/AKfycbwh03-sgINjm_iIRR6Ok8FSL8vltsqXI53nUB8P7eKuaVM_jqtvaPPc0zv0xEcrss1R/exec";
+    const API_BASE = 'https://script.google.com/macros/s/AKfycby2TBhL96Nl_tG8hRzv3dObYZt6pc22zW4PrQmSN0CD1qA7Wx6qOWnlMSHWlgGp6nC1/exec';
 
     const state = {
       logoUrl: '',
