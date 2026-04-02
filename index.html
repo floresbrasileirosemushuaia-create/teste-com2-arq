@@ -82,29 +82,13 @@
     .home-fab { left:18px; background:#111827; }
     .cart-fab { right:18px; background:var(--blue); }
 
-    .search-box { margin:18px 0 10px; }
-    .search-box label { display:block; font-size:14px; margin-bottom:8px; }
-
-    .search-box input {
-      width:100%;
-      height:36px;
-      padding:0 12px;
-      border:1px solid #cdcdcd;
-      border-radius:4px;
-      background:#fff;
-      font-size:15px;
-      outline:none;
-    }
-
-    .search-note { font-size:13px; color:var(--muted); margin-top:8px; }
-
-    .wa-catalog-top{
+    .wa-catalog-top {
       display:flex;
       justify-content:center;
       margin:18px 0 4px;
     }
 
-    .wa-catalog-btn{
+    .wa-catalog-btn {
       display:inline-flex;
       align-items:center;
       justify-content:center;
@@ -122,22 +106,37 @@
       transition:transform .15s ease, filter .15s ease;
     }
 
-    .wa-catalog-btn:hover{
+    .wa-catalog-btn:hover {
       filter:brightness(.96);
       transform:translateY(-1px);
     }
 
-    .wa-catalog-btn:active{
+    .wa-catalog-btn:active {
       transform:translateY(0);
     }
 
-    .wa-catalog-note{
+    .wa-catalog-note {
       text-align:center;
       color:var(--muted);
       font-size:13px;
       margin:8px 0 0;
     }
 
+    .search-box { margin:18px 0 10px; }
+    .search-box label { display:block; font-size:14px; margin-bottom:8px; }
+
+    .search-box input {
+      width:100%;
+      height:36px;
+      padding:0 12px;
+      border:1px solid #cdcdcd;
+      border-radius:4px;
+      background:#fff;
+      font-size:15px;
+      outline:none;
+    }
+
+    .search-note { font-size:13px; color:var(--muted); margin-top:8px; }
     .section-title { font-size:18px; font-weight:800; margin:24px 0 12px; }
     .categories-grid { display:grid; grid-template-columns:1fr; gap:10px; }
 
@@ -236,16 +235,7 @@
     .btn-info { background:var(--btn-gray); border:1px solid #9ea3a8; color:#6b6f76; }
     .btn-add { background:#fff; border:1px solid var(--blue); color:var(--blue); }
 
-    .empty {
-      background:#fff;
-      border-radius:18px;
-      box-shadow:var(--shadow);
-      padding:24px 16px;
-      text-align:center;
-      color:var(--muted);
-    }
-
-    .loading {
+    .empty, .loading {
       background:#fff;
       border-radius:18px;
       box-shadow:var(--shadow);
@@ -409,7 +399,6 @@
     }
 
     .field small { display:block; color:var(--muted); margin-top:6px; font-size:12px; }
-
     .cart-list { display:grid; gap:12px; }
 
     .cart-item {
@@ -546,7 +535,6 @@
       <p class="subtitle">Toca una categoría o usá la búsqueda para armar tu pedido.</p>
     </header>
 
-
     <div class="wa-catalog-top">
       <a class="wa-catalog-btn" href="https://wa.me/c/5492966678951" target="_blank" rel="noopener noreferrer" aria-label="Abrir catálogo de WhatsApp">
         <span>🟢</span>
@@ -554,7 +542,6 @@
       </a>
     </div>
     <p class="wa-catalog-note">También podés abrir el catálogo directo en WhatsApp.</p>
-
 
     <div class="search-box">
       <label for="searchInput">Buscar excursiones</label>
