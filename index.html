@@ -709,6 +709,7 @@
 
   <script>
     const API_BASE = "https://script.google.com/macros/s/AKfycbwh03-sgINjm_iIRR6Ok8FSL8vltsqXI53nUB8P7eKuaVM_jqtvaPPc0zv0xEcrss1R/exec";
+    const WHATSAPP_FINAL = "5492966678951";
 
     const state = {
       logoUrl: '',
@@ -809,6 +810,45 @@
       state.search = '';
       document.getElementById('searchInput').value = '';
       render();
+    }
+
+    function buildItemLabel(item) {
+      const tipo = String(item.tipo || '').trim();
+      const categoria = String(item.categoria || '').trim();
+      const actividad = String(item.actividad || '').trim();
+      const title = String(item.title || '').trim();
+
+      if (tipo && categoria) return tipo + ' - ' + categoria;
+      if (tipo && actividad) return tipo + ' - ' + actividad;
+      if (title) return title;
+      if (actividad) return actividad;
+      return tipo || 'Servicio';
+    }
+
+    function buildClientWhatsAppMessage(payload) {
+      const lines = [];
+
+      lines.push('Perla Andina');
+      lines.push('Hola, soy ' + payload.customer.name + ' quiero solicitar estas excursiones:');
+      lines.push('');
+
+      payload.items.forEach(item => {
+        const lineTotal = Number(item.priceNumber || 0) * Number(item.qty || 0);
+        lines.push('• ' + item.qty + 'x ' + buildItemLabel(item));
+        lines.push(' | Fecha: ' + (item.desiredDate || 'Sin fecha definida') + ' | ' + formatCurrency(lineTotal));
+        lines.push('');
+      });
+
+      lines.push('Nombre: ' + payload.customer.name);
+      lines.push('WhatsApp: ' + (payload.customer.whatsapp || '-'));
+      lines.push('Hospedaje: ' + (payload.customer.hotel || '-'));
+
+      return lines.join('\n').replace(/\n{3,}/g, '\n\n');
+    }
+
+    function buildClientWhatsAppUrl(payload) {
+      const message = buildClientWhatsAppMessage(payload);
+      return 'https://wa.me/' + WHATSAPP_FINAL + '?text=' + encodeURIComponent(message);
     }
 
     function getFilteredItems() {
@@ -1179,8 +1219,18 @@
 
       const btn = document.getElementById('submitOrderBtn');
       btn.disabled = true;
-      btn.textContent = 'Guardando...';
+      btn.textContent = 'Abriendo WhatsApp...';
 
+      // Abre WhatsApp imediatamente por gesto do usuário
+      const directWaUrl = buildClientWhatsAppUrl(payload);
+      const waWindow = window.open(directWaUrl, '_blank');
+
+      // Se o navegador bloquear, cai no mesmo separador
+      if (!waWindow) {
+        window.location.href = directWaUrl;
+      }
+
+      // Salva em segundo plano na planilha
       submitViaForm(payload)
         .then(res => {
           btn.disabled = false;
@@ -1193,13 +1243,13 @@
           closeModal('surveyModal');
           closeModal('customerModal');
           closeModal('cartModal');
-
-          window.open(res.data.whatsappUrl, '_blank');
         })
         .catch(err => {
           btn.disabled = false;
           btn.textContent = 'Guardar y abrir WhatsApp';
-          alert(err && err.message ? err.message : 'No se pudo guardar el pedido.');
+
+          // Mantém o WhatsApp aberto mesmo se falhar o save
+          alert('El WhatsApp fue abierto, pero no se pudo guardar el pedido en la planilla. ' + (err && err.message ? err.message : ''));
         });
     }
 
