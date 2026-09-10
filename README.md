@@ -8,4 +8,4 @@ Portal B2B completo hospedado no Vercel.
 - Registro Push: `/api/register` -> Apps Script
 - Envio Push: `/api/send` -> gateway VAPID legado enquanto as chaves privadas permanecem protegidas no projeto Push existente
 
-O branch `backup-catalogo-pre-b2b-v231` preserva o catálogo que existia antes da migração.
+O branch `backup-catalogo-pre-b2b-v230` preserva o catálogo que existia antes da migração.
