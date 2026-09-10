@@ -1,4 +1,4 @@
-const CACHE='perla-b2b-v230';
+const CACHE='perla-b2b-v231';
 const STATIC=['/','/manifest.webmanifest','/icon.svg','/badge.svg'];
 self.addEventListener('install',event=>{event.waitUntil(caches.open(CACHE).then(c=>c.addAll(STATIC)).catch(()=>null));self.skipWaiting()});
 self.addEventListener('activate',event=>{event.waitUntil(Promise.all([caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k)))),self.clients.claim()]))});
