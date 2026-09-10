@@ -1,12 +1,11 @@
-# Perla Andina B2B — V2.3.0
+# Perla Andina B2B — V2.3.1
 
 Portal B2B completo hospedado no Vercel.
 
-- Interface pública: `https://perlaandinacatalogo.vercel.app`
-- Layout: carregado diretamente do `PortalB2B.html` do Apps Script para manter a mesma interface B2B
+- Interface: `index.html` (mesmo layout do Portal B2B Apps Script)
 - Backend: Google Apps Script via `/api/b2b`
-- Web Push: Service Worker no próprio domínio principal
-- Registro Push: `/api/register` → Apps Script
-- Envio Push: `/api/send` → gateway VAPID protegido
+- Web Push: Service Worker no próprio domínio
+- Registro Push: `/api/register` -> Apps Script
+- Envio Push: `/api/send` -> gateway VAPID legado enquanto as chaves privadas permanecem protegidas no projeto Push existente
 
-O catálogo que existia antes desta migração está preservado no branch `backup-catalogo-pre-b2b-v230`.
+O branch `backup-catalogo-pre-b2b-v231` preserva o catálogo que existia antes da migração.
