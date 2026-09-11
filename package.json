@@ -1,0 +1,8 @@
+{
+  "name":"perla-andina-b2b",
+  "version":"2.4.4",
+  "private":true,
+  "description":"Perla Andina B2B V2.4.4 — Vercel shell + Apps Script backend",
+  "engines":{"node":">=20"},
+  "dependencies":{"web-push":"3.6.7"}
+}

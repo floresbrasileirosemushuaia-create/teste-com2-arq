@@ -1,0 +1,7 @@
+{
+  "$schema":"https://openapi.vercel.sh/vercel.json",
+  "version":2,
+  "functions":{"api/*.js":{"maxDuration":60}},
+  "headers":[{"source":"/service-worker.js","headers":[{"key":"Cache-Control","value":"no-cache, no-store, must-revalidate"},{"key":"Service-Worker-Allowed","value":"/"}]},{"source":"/api/(.*)","headers":[{"key":"Cache-Control","value":"no-store"}]},{"source":"/(.*)","headers":[{"key":"X-Content-Type-Options","value":"nosniff"},{"key":"Referrer-Policy","value":"strict-origin-when-cross-origin"}]}],
+  "rewrites":[{"source":"/control","destination":"/control.html"},{"source":"/activate/:path*","destination":"/"}]
+}
